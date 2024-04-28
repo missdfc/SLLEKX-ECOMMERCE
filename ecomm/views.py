@@ -31,7 +31,7 @@ class ListProduct(generics.ListAPIView):
 class ListProduct(generics.ListAPIView):
     serializer_class = CategorySerializer
 
-    def get_queryset(self)
+    def get_queryset(self):
         category_id = self.kwargs['category_id']
 
 # product detail views
