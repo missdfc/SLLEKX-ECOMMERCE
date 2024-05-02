@@ -7,45 +7,47 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
-# category serializer
+# customer serializer
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
 
-# category serializer
+# product serializer
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     class Meta:
         model = Product
         fields = '__all__'
 
-# category serializer
+# cart serializer
 class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
         fields = '__all__'
 
-# category serializer
+# wishlist serializer
 class WishlistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wishlist
         fields = '__all__'
 
-# category serializer
+# payment serializer
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = '__all__' # come back to this
 
-# category serializer
+# orders placed serializer
 class OrderPlacedSerializer(serializers.ModelSerializer):
+    customer = CustomerSerializer
+    payment = PaymentSerializer
     class Meta:
         model = OrderPlaced
         fields = '__all__' # comee back to this
 
-# category serializer
-class CategorySerializer(serializers.ModelSerializer):
+# review serializer
+class ProductReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__' # come back to this

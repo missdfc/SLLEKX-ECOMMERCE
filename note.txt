@@ -7,3 +7,13 @@
             return queryset
         else:
             return Product.objects.all()
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        item = self.kwargs.get('item_pk')
+        order = OrderPlaced.objects.get(pk=pk, user=self.request.user)
+        try:
+            item = order.items.get(pk=item)
+            return item
+        except OrderPlaced.DoesNotExist :
+            raise NotFound("Order item not found")
